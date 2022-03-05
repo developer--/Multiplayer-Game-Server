@@ -14,13 +14,17 @@ import java.io.Serializable
 data class Player(val p1: Boolean, val p2: Boolean) : Serializable
 
 @kotlinx.serialization.Serializable
-data class PlayerSelected(@SerialName("id") val id: String, @SerialName("isSelected") val isSelected: Boolean) : Serializable
+data class PlayerSelected(@SerialName("id") val id: String, @SerialName("isSelected") val isSelected: Boolean) :
+    Serializable
 
 @kotlinx.serialization.Serializable
 data class PlayerInfo(val playerId: String, val deviceId: String) : Serializable
 
 @kotlinx.serialization.Serializable
 data class CarPosition(val playerId: Int, val position: Int) : Serializable
+
+@kotlinx.serialization.Serializable
+data class GameReady(val totalPlayers: Int) : Serializable
 
 const val id_p1 = 1
 const val id_p2 = 2
@@ -80,7 +84,7 @@ object Util {
                 if (players.values.size == MAX_PLAYERS_COUNT) {
                     players.clear()
                     server.allClients?.forEach { cl ->
-                        cl.sendEvent(ClientWatchingEvents.PLAYERS_READY.eventName, true)
+                        cl.sendEvent(ClientWatchingEvents.PLAYERS_READY.eventName, GameReady(MAX_PLAYERS_COUNT))
                     }
                 }
             } catch (e: Exception) {
