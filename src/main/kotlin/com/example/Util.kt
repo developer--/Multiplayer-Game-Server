@@ -14,8 +14,7 @@ import java.io.Serializable
 data class Player(val p1: Boolean, val p2: Boolean) : Serializable
 
 @kotlinx.serialization.Serializable
-data class PlayerSelected(@SerialName("id") val id: String, @SerialName("isSelected") val isSelected: Boolean) :
-    Serializable
+data class PlayerSelected(@SerialName("id") val id: String, @SerialName("isSelected") val isSelected: Boolean) : Serializable
 
 @kotlinx.serialization.Serializable
 data class PlayerInfo(val playerId: String, val deviceId: String) : Serializable
