@@ -7,7 +7,7 @@ import io.ktor.server.engine.*
 
 fun main() {
     Util.connect()
-    embeddedServer(CIO, port = 8080, host = "0.0.0.0") {
+    embeddedServer(CIO, port = System.getenv("PORT").toInt()) {
         configureRouting()
         configureSerialization()
 //        configureSockets()
