@@ -1,0 +1,1 @@
+web: ./build/install/War Of Fingers/bin/War Of Fingers
